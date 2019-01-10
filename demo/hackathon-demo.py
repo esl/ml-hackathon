@@ -14,6 +14,10 @@ from keras.optimizers import *
 # vi ~/.matplotlib/matplotlibrc
 # ----> backend: TkAgg
 
+# urls obtained from http://imagenet.stanford.edu/
+# saved as cat_all_urls
+# saved as jellyfish_all_urls
+
 
 # cat cat_all_urls | grep flickr > cat_flickr_urls
 # head -400 cat_flickr_urls > train/cat/cat_train_urls
@@ -22,6 +26,10 @@ from keras.optimizers import *
 # cat jellyfish_all_urls | grep flickr > jellyfish_flickr_urls
 # head -400 jellyfish_flickr_urls > train/jellyfish/jellyfish_train_urls
 # tail -n +401 jellyfish_flickr_urls | head -30 > test/jellyfish/jellyfish_test_urls
+
+# to download the images
+# cd train/cat/cat_train_urls
+# wget -i cat_train_urls
 
 
 train_data = 'train'
