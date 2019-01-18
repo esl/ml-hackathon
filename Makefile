@@ -17,12 +17,20 @@ $(IMAGES_DIRS):
 
 $(RETRAINED_GRAPH):
 	python bin/retrain.py \
-	--bottleneck_dir=$(TF_DIR)/bottlenecks \
-	--how_many_training_steps=500 \
-	--model_dir=$(TF_DIR)/models \
-	--summaries_dir=$(TF_DIR)/training_summaries/inception_v3 \
-	--output_graph=$@ \
-	--output_labels=$(LABELS_FILE) \
-	--image_dir=$(IMAGES_DIR)
+	    --bottleneck_dir=$(TF_DIR)/bottlenecks \
+	    --how_many_training_steps=500 \
+	    --model_dir=$(TF_DIR)/models \
+	    --summaries_dir=$(TF_DIR)/training_summaries/inception_v3 \
+	    --output_graph=$@ \
+	    --output_labels=$(LABELS_FILE) \
+	    --image_dir=$(IMAGES_DIR)
+
+label_image:
+	python bin/label_image.py \
+	    --graph=$(RETRAINED_GRAPH) \
+	    --image=$(IMAGE_PATH) \
+	    --input_layer=Placeholder \
+	    --output_layer=final_result \
+	    --labels $(LABELS_FILE)
 
 .PHONY: all
