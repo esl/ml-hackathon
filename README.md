@@ -21,3 +21,7 @@ Run `make` to fetch all images and start model retraining:
     $ make
 
 Once retraining is over, graph will be available at `assets/tf/retrained_graph.pb`.
+
+### Label image
+
+    $ IMAGE_PATH=assets/images/cats/100833971_a33a86031f.jpg make label_image
