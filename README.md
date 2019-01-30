@@ -1,13 +1,27 @@
 # ml-hackathon
 
+This is an example of retraining and claficiation of an images based on official tensorflow [tutorial](https://www.tensorflow.org/hub/tutorials/image_retraining).
 
-Under demo there is a little example I hacked up just to show how to get raw images, prepare them and plot the result.
+## Requirements
 
-This is just to be used as reference as models should indeed be stored, deployed, wrapped into daemons/containers and connected to Erlang via port/distribution.
+- [pipenv](https://pipenv.readthedocs.io/en/latest/#install-pipenv-today)
+- python (tested on 3.6, but migth also work on 3.7)
+- make
 
-Figure_1 shows the result which is far from accurate.
+## Usage
 
-In order to make it more accurate, there could be more preparation on the images, a higher definition and more data.
+Before you start, it's advised to install all packages within a virtual environment. `pipenv` should be able to create virtual environment and install all necessary packages:
 
-In particular some images came up with "photo is no longer available" and therefore should be removed from the training and test set.
+    $ pipenv shell
 
+### Retrain model
+
+Run `make` to fetch all images and start model retraining:
+
+    $ make
+
+Once retraining is over, graph will be available at `assets/tf/retrained_graph.pb`.
+
+### Label image
+
+    $ IMAGE_PATH=assets/images/cats/100833971_a33a86031f.jpg make label_image
